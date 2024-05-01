@@ -1,9 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import JobCard from './components/jobCard';
 
 function App() {
   return (
-    <div>hello</div>
+    <JobCard/>
   );
 }
 
