@@ -6,27 +6,14 @@ import {
   Button,
   Box,
   Container,
+  Link,
 
 } from '@mui/material';
 
 
 
-const JobCard = () => {
-    
-    const job = {
-        title: 'Software Engineer',
-        company: 'Trumio',
-        location: 'Mountain View, CA',
-        description: 'Work on the next big thing',
-        experience: '5 years',
-        applyLink: 'https://careers.google.com/jobs/results/123456',
-        minSalary: 18,
-        maxSalary: 22,
-        minExp: 2,
-    }
-
-
-  
+const JobCard = ({job}) => {
+ 
 
   return (
     <Container maxWidth="sm">
@@ -39,7 +26,7 @@ const JobCard = () => {
             <Box sx={{paddingLeft:'10px'}}>
         <Typography sx={{fontSize:'13px',fontWeight:600,color:'#8b8b8b'}}>{job.company}</Typography>
         <Typography sx={{fontSize:'14px',fontWeight:400}}>
-          {job.title}
+          {job.jobRole}
         </Typography>
         <Typography sx={{fontSize:'11px',fontWeight:500}} >
           {job.location}
@@ -47,16 +34,16 @@ const JobCard = () => {
         </Box>
         </Box>
       <CardContent>
-            <Typography  sx={{fontSize:'14px',fontWeight:400,my:'8px'}}>{`Estimated Salary: ${job.minSalary} - ${job.maxSalary} LPA  ✅`}
+            <Typography  sx={{fontSize:'14px',fontWeight:400,my:'8px'}}>{`Estimated Salary: ${job.minJdSalary} - ${job.maxJdSalary} LPA  ✅`}
             </Typography>
             <Box sx={{mb:'20px'}} >
                 <Typography sx={{fontSize:'1rem',fontWeight:600}}>About Company:</Typography>
                 <Typography sx={{fontWeight:600}} >About us</Typography>
                 <Box sx={{position:'relative'}}>
                 <Typography sx={{position:'relative', maskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)',height:'200px' }}>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci consequuntur dolorum iusto excepturi hic iure, quas pisicing elit. Adipisci consequuntur dolorum iusto excepturi hic iure, quas temporibus voluptas vitae non commodi reprehenderit sit recusandae nihil doloring elit. Adipisci consequuntur dolorum iusto excepturi hic iure, quas temporibus voluptas vitae non commodi reprehenderit sit recusandae nihil dolor l labore quisquam iste tempora!Lorem
+                    {job.jobDetailsFromCompany}
                 </Typography>
-                <Button sx={{position:'absolute',bottom:'-5px',left:'30%'}}><Typography sx={{color:'#4943da'}}>View job</Typography></Button>
+                <Button sx={{position:'absolute',bottom:'-5px',left:'30%'}}><Link href={job.jdLink} sx={{color:'#4943da'}}>View job</Link></Button>
                 </Box>
             </Box>
           
