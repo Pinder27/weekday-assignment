@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Card,
   CardContent,
@@ -6,12 +6,15 @@ import {
   Button,
   Box,
   Container,
-  CardHeader,
-  
+  Fade,
 } from '@mui/material';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import BoltIcon from '@mui/icons-material/Bolt';
+
 
 
 const JobCard = () => {
+    
     const job = {
         title: 'Software Engineer',
         company: 'Google',
@@ -29,31 +32,40 @@ const JobCard = () => {
 
   return (
     <Container maxWidth="sm">
-    <Card sx='sm'>
-        <Container>
+    <Card sx={{paddingTop:'20px',borderRadius:6,width:'300px'}}>
+       <Box sx={{border:'1px solid',borderRadius:5,width:200,marginLeft:'10px',marginBottom:'10px'}}>
+        <Typography align='center' sx={{padding:'4px'}}>⏳ Posted 10 days ago</Typography>
+       </Box>
+        <Container sx={{display:'flex',margin:0,padding:0}}>
+            <img width={30} height={50} src='https://storage.googleapis.com/weekday-assets/airtableAttachment_1713598306546_majma.jpg'/>
+            <Container>
         <Typography>Company</Typography>
-        <Typography variant="h5" component="h2">
+        <Typography component="h2">
           {job.title}
         </Typography>
-        <Typography variant="body2" color="textSecondary" gutterBottom>
+        <Typography variant="body2" color="textSecondary" >
           {job.company} - {job.location}
         </Typography>
         </Container>
+        </Container>
       <CardContent>
-            <Typography>{`Estimated Salary: ${job.minSalary} - ${job.maxSalary} LPA`}</Typography>
+            <Typography>{`Estimated Salary: ${job.minSalary} - ${job.maxSalary} LPA`}
+            <CheckBoxIcon color='success' sx={{height:'25px'}}/>
+            </Typography>
             <Box>
-                <Typography>About Company:</Typography>
+                <Typography variant='h5'>About Company:</Typography>
                 <Typography>About us</Typography>
-                <Typography>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci consequuntur dolorum iusto excepturi hic iure, quas temporibus voluptas vitae non commodi reprehenderit sit recusandae nihil dolor labore quisquam iste tempora!</Typography>
-                <Button>View More</Button>
+                <Typography  paragraph>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci consequuntur dolorum iusto excepturi hic iure, quas temporibus voluptas vitae non commodi reprehenderit sit recusandae nihil dolor labore quisquam iste tempora!</Typography>
+                <Button><Typography>View job</Typography></Button>
          
           </Box>
           <Typography>
             Minimum Experience
           </Typography>
-          <Typography>{`${job.minExp} years`}</Typography>
-          <Button variant="contained" style={{ backgroundColor: '#69f0ae', color: 'black' }}>
-            <a href={job.applyLink} style={{ textDecoration: 'none', color: 'black' }}>Apply</a>
+          <Typography  gutterBottom>{`${job.minExp} years`}</Typography>
+          <Button variant="contained" style={{ backgroundColor: '#69f0ae', color: 'black',width:'100%' }}>
+            <BoltIcon sx={{color:'#ffb400'}} />
+            <Typography>Easy Apply</Typography>
           </Button>
       </CardContent>
     </Card>
