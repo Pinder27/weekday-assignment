@@ -6,10 +6,8 @@ import {
   Button,
   Box,
   Container,
-  Fade,
+
 } from '@mui/material';
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import BoltIcon from '@mui/icons-material/Bolt';
 
 
 
@@ -17,7 +15,7 @@ const JobCard = () => {
     
     const job = {
         title: 'Software Engineer',
-        company: 'Google',
+        company: 'Trumio',
         location: 'Mountain View, CA',
         description: 'Work on the next big thing',
         experience: '5 years',
@@ -33,39 +31,41 @@ const JobCard = () => {
   return (
     <Container maxWidth="sm">
     <Card sx={{paddingTop:'20px',borderRadius:6,width:'300px'}}>
-       <Box sx={{border:'1px solid',borderRadius:5,width:200,marginLeft:'10px',marginBottom:'10px'}}>
-        <Typography align='center' sx={{padding:'4px'}}>⏳ Posted 10 days ago</Typography>
+       <Box sx={{display:'inline-block',border:'1px solid rgb(230, 230, 230)',boxShadow:'rgb(6 6 6 / 5%) 0px 2px 6px 0px',borderRadius:3,marginLeft:'20px',marginBottom:'15px'}}>
+        <Typography align='center' fontSize={10} sx={{padding:'4px'}}>⏳ Posted 10 days ago</Typography>
        </Box>
-        <Container sx={{display:'flex',margin:0,padding:0}}>
-            <img width={30} height={50} src='https://storage.googleapis.com/weekday-assets/airtableAttachment_1713598306546_majma.jpg'/>
-            <Container>
-        <Typography>Company</Typography>
-        <Typography component="h2">
+        <Box sx={{display:'flex',paddingLeft:'15px',marginBottom:'-15px'}}>
+            <img width={30} height={50} alt='logo' src='https://storage.googleapis.com/weekday-assets/airtableAttachment_1713598306546_majma.jpg'/>
+            <Box sx={{paddingLeft:'10px'}}>
+        <Typography sx={{fontSize:'13px',fontWeight:600,color:'#8b8b8b'}}>{job.company}</Typography>
+        <Typography sx={{fontSize:'14px',fontWeight:400}}>
           {job.title}
         </Typography>
-        <Typography variant="body2" color="textSecondary" >
-          {job.company} - {job.location}
+        <Typography sx={{fontSize:'11px',fontWeight:500}} >
+          {job.location}
         </Typography>
-        </Container>
-        </Container>
+        </Box>
+        </Box>
       <CardContent>
-            <Typography>{`Estimated Salary: ${job.minSalary} - ${job.maxSalary} LPA`}
-            <CheckBoxIcon color='success' sx={{height:'25px'}}/>
+            <Typography  sx={{fontSize:'14px',fontWeight:400,my:'8px'}}>{`Estimated Salary: ${job.minSalary} - ${job.maxSalary} LPA  ✅`}
             </Typography>
-            <Box>
-                <Typography variant='h5'>About Company:</Typography>
-                <Typography>About us</Typography>
-                <Typography  paragraph>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci consequuntur dolorum iusto excepturi hic iure, quas temporibus voluptas vitae non commodi reprehenderit sit recusandae nihil dolor labore quisquam iste tempora!</Typography>
-                <Button><Typography>View job</Typography></Button>
-         
-          </Box>
+            <Box sx={{mb:'20px'}} >
+                <Typography sx={{fontSize:'1rem',fontWeight:600}}>About Company:</Typography>
+                <Typography sx={{fontWeight:600}} >About us</Typography>
+                <Box sx={{position:'relative'}}>
+                <Typography sx={{position:'relative', maskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)',height:'200px' }}>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci consequuntur dolorum iusto excepturi hic iure, quas pisicing elit. Adipisci consequuntur dolorum iusto excepturi hic iure, quas temporibus voluptas vitae non commodi reprehenderit sit recusandae nihil doloring elit. Adipisci consequuntur dolorum iusto excepturi hic iure, quas temporibus voluptas vitae non commodi reprehenderit sit recusandae nihil dolor l labore quisquam iste tempora!Lorem
+                </Typography>
+                <Button sx={{position:'absolute',bottom:'-5px',left:'30%'}}><Typography sx={{color:'#4943da'}}>View job</Typography></Button>
+                </Box>
+            </Box>
+          
           <Typography>
             Minimum Experience
           </Typography>
           <Typography  gutterBottom>{`${job.minExp} years`}</Typography>
-          <Button variant="contained" style={{ backgroundColor: '#69f0ae', color: 'black',width:'100%' }}>
-            <BoltIcon sx={{color:'#ffb400'}} />
-            <Typography>Easy Apply</Typography>
+          <Button variant="contained" sx={{ backgroundColor: '#69f0ae', color: 'black',width:'100%',boxShadow:0 }}>
+            <Typography>⚡ Easy Apply</Typography>
           </Button>
       </CardContent>
     </Card>
