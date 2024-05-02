@@ -9,6 +9,7 @@ import JobCard from './jobCard';
 const JobList = () => {
     const offset = useSelector(state => state.offset.value)
     const jobList = useSelector(state => state.jobList.value)
+    const [firstLoad, setFirstLoad] = useState(true); 
 
     const filters = useSelector(state => state.filter.value)
     const dispatch = useDispatch()
@@ -32,11 +33,13 @@ const JobList = () => {
         .then((data) => {
             dispatch(jobListIncrement(data.jdList)); // Append newly fetched data
             setIsLoading(false);
+            setFirstLoad(false);
             dispatch(offsetIncrement()) // Increment for next 10 records
         })
         .catch((error) => {
             console.error(error);
             setIsLoading(false);
+            setFirstLoad(false);
         });
           
       }, []);
@@ -96,9 +99,11 @@ const JobList = () => {
 
 
 
-     // Display loading message
-      if(isLoading){
+     // Display loading message for first load
+      if(firstLoad){
+        
         return  <Typography p={5} variant='h5' align='center'>Loading...</Typography>
+
        }
 
    // Display message if no jobs found
