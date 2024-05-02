@@ -9,6 +9,8 @@ import JobCard from './jobCard';
 const JobList = () => {
     const offset = useSelector(state => state.offset.value)
     const jobList = useSelector(state => state.jobList.value)
+
+    const filters = useSelector(state => state.filter.value)
     const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false);
     console.log(jobList);
@@ -81,19 +83,28 @@ const JobList = () => {
           window.removeEventListener("scroll", handleScroll);
         };
       }, []);
+      
 
+     console.log("filters",filters);
+
+     const filteredJobList =  jobList.filter((job) => { 
+        return (job.minExp >= filters.minExp && 
+            (filters.role === '' || job.jobRole === filters.role)&&
+            (job.minJdSalary >= filters.minPay)
+        );
+      })// Filter jobs based on minimum experience}
    
 
     return (
         <>
             <Grid container spacing={2}>
-                {jobList.map((job,index) => (
+                {filteredJobList.map((job,index) => (
                     <Grid item key={index}>
                      <JobCard job={job} />
                    </Grid>
                 ))}
             </Grid>
-            {isLoading && <Typography p={5} variant='h1' align='center'>Loading...</Typography>}
+            {isLoading && <Typography p={5} variant='h5' align='center'>Loading...</Typography>}
         </>
     );
 };

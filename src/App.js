@@ -1,11 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
-import JobCard from './components/jobCard';
-import JobList from './components/JobsList';
+
+import Main from './components/main';
 
 function App() {
   return (
-    <JobList/>
+    <>
+   <Main/>
+    </>
   );
 }
 
