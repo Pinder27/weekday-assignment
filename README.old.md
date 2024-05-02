@@ -7,6 +7,6 @@
  due to absence of company name default name Company has been added, and also one of filters 
  (search by company name) depends on company name, so this filter has no functionalty but is displayed in ui
 
- due to absence of work Mode field in response , filtering that depends on work mode has no functinality but is displayed in ui
+ due to absence of work Mode field in response , filtering that depends on work mode has no functionality but is displayed in ui
 
  there is no date present in response object so the posted ago at the top of every job has been set to 10 days as default
