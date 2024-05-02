@@ -1,13 +1,17 @@
 
 import { Grid, Typography } from '@mui/material';
+import { useSelector, useDispatch } from 'react-redux'
+import {  offsetIncrement } from '../redux/slices/offsetSlice'
+import { jobListIncrement } from '../redux/slices/jobListSlice';
 import React, { useEffect,useState} from 'react';
 import JobCard from './jobCard';
 
 const JobList = () => {
-    const [offset,setOffset] = useState(0); 
-    const [JobList,setJobList] = useState([]);
+    const offset = useSelector(state => state.offset.value)
+    const jobList = useSelector(state => state.jobList.value)
+    const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false);
-    console.log(JobList);
+    console.log(jobList);
      // Fetch data on initial load
     useEffect(() => {
        
@@ -24,9 +28,9 @@ const JobList = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-            setJobList((prevList) => [...prevList, ...data.jdList]); // Append newly fetched data
+            dispatch(jobListIncrement(data.jdList)); // Append newly fetched data
             setIsLoading(false);
-            setOffset(offset+10); // Increment for next 10 records
+            dispatch(offsetIncrement()) // Increment for next 10 records
         })
         .catch((error) => {
             console.error(error);
@@ -52,9 +56,9 @@ const JobList = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-            setJobList((prevList) => [...prevList, ...data.jdList]); // Append newly fetched data
+            dispatch(jobListIncrement(data.jdList)); // Append newly fetched data
             setIsLoading(false);
-            setOffset(offset+10); // Increment for next 10 records
+            dispatch(offsetIncrement()); // Increment for next 10 records
         })
         .catch((error) => {
             console.error(error);
@@ -83,7 +87,7 @@ const JobList = () => {
     return (
         <>
             <Grid container spacing={2}>
-                {JobList.map((job,index) => (
+                {jobList.map((job,index) => (
                     <Grid item key={index}>
                      <JobCard job={job} />
                    </Grid>
