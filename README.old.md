@@ -10,3 +10,11 @@
  due to absence of work Mode field in response , filtering that depends on work mode has no functionality but is displayed in ui
 
  there is no date present in response object so the posted ago at the top of every job has been set to 10 days as default
+
+
+
+To run the app locally  - 
+step1 --  clone the repo ;
+step2 --  run npm install ;
+step3 -- run npm start ;
+step4 -- go to locahost:3000 in your browser ; 
