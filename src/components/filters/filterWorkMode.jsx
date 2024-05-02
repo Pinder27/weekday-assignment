@@ -37,7 +37,7 @@ export default function FilterWorkMode() {
         onInputChange={(event, newInputValue) => {
           setInputValue(newInputValue);
         }}
-        id="controllable-states-demo"
+        id="controllable-states-filterWorkMode"
         options={modes}
         sx={{ width: 150 }}
         renderInput={(params) => <TextField {...params} label="workMode" />}

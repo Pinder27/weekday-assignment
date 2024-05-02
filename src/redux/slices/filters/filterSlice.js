@@ -4,7 +4,7 @@ export const filterSlice = createSlice({
   name: 'filterRole',
   initialState: {
     value: {
-        role: '',
+        role: [],
         location: '',
         minExp: 0  ,
         minPay:0,

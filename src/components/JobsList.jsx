@@ -89,12 +89,24 @@ const JobList = () => {
 
      const filteredJobList =  jobList.filter((job) => { 
         return (job.minExp >= filters.minExp && 
-            (filters.role === '' || job.jobRole === filters.role)&&
+            (filters.role.length === 0 || filters.role.includes(job.jobRole)) &&
             (job.minJdSalary >= filters.minPay)
         );
-      })// Filter jobs based on minimum experience}
-   
+      })// Filter jobs based on filters}
 
+
+
+     // Display loading message
+      if(isLoading){
+        return  <Typography p={5} variant='h5' align='center'>Loading...</Typography>
+       }
+
+   // Display message if no jobs found
+      if(jobList.length === 0){
+        return <Typography p={5} variant='h5' align='center'>No jobs found</Typography>
+      }
+
+      // Display job list
     return (
         <>
             <Grid container spacing={2}>

@@ -1,19 +1,12 @@
 import React from 'react';
 import FilterRole from './filters/filterRole';
 import {
-    Card,
-    CardContent,
-    Typography,
-    Button,
-    Box,
-    Container,
-    Link,
     Grid,
-  
   } from '@mui/material';
 import FilterMinExp from './filters/filterMinExp';
 import FilterMinBasePay from './filters/filterMinBasePay';
 import FilterWorkMode from './filters/filterWorkMode';
+import FilterCompanyName from './filters/filterCompanyName';
 
 const Filter = () => {
     // Add your filter logic here
@@ -33,6 +26,9 @@ const Filter = () => {
             </Grid>
             <Grid item>
             <FilterWorkMode/>
+            </Grid>
+            <Grid item>
+            <FilterCompanyName/>
             </Grid>
             </Grid>
           
